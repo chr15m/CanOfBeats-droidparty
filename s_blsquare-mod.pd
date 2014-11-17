@@ -1,0 +1,17 @@
+#N canvas 472 349 607 288 10;
+#X declare -path ./rjlib/rj/;
+#X obj 80 43 inlet~;
+#X obj 335 53 inlet;
+#X text 78 23 freq~;
+#X text 335 35 phase;
+#X obj 81 214 outlet~;
+#X text 358 131 include pwm here;
+#X msg 187 63 0.5;
+#X obj 187 40 loadbang;
+#X obj 425 49 declare -path ./rjlib/rj/;
+#X obj 145 120 s_blsquare;
+#X connect 0 0 9 0;
+#X connect 1 0 9 2;
+#X connect 6 0 9 1;
+#X connect 7 0 6 0;
+#X connect 9 0 4 0;

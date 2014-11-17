@@ -1,0 +1,9 @@
+[submodule "sssad"]
+	path = sssad
+	url = git@github.com:chr15m/sssad.git
+[submodule "rjlib"]
+	path = rjlib
+	url = https://github.com/chr15m/rjlib.git
+[submodule "pd-net-sync"]
+	path = pd-net-sync
+	url = git@github.com:chr15m/pd-net-sync.git

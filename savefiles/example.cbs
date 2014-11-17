@@ -1,0 +1,17 @@
+set-hh 7;
+set-sd 6;
+set-bd 2;
+notes-tabledata 0 1 8 5 8;
+noteparam-0-tabledata 0 0.1925 0.6875 0.99 0.751667 0.605 0 0.174167
+0.4125 0.724167 0.751667 0.715 0.705833 0.6875 0.623333 0.696667 0.788333
+;
+notelist-0-tabledata 0 5 13 23 16 13 0 0 1 4 5 9 10 4 1 3 6;
+hh-loop-tabledata 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0;
+sd-loop-tabledata 0 0 0 0 0 1 0 0 1 0 0 0 0 1 0 0 0;
+bd-loop-tabledata 0 1 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0;
+set-synth 0;
+bpmreceive 90;
+volume_synth_r 1;
+volume_drums_r 1;
+synth_pan_r 0.5;
+drums_pan_r 0.5;

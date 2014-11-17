@@ -1,0 +1,15 @@
+#N canvas 0 0 450 300 10;
+#X obj 60 61 list length;
+#X obj 15 123 list;
+#X obj 15 12 inlet;
+#X obj 15 144 outlet;
+#X obj 15 32 t a a;
+#X obj 60 82 == \$1;
+#X obj 15 103 spigot 1;
+#X connect 0 0 5 0;
+#X connect 1 0 3 0;
+#X connect 2 0 4 0;
+#X connect 4 0 6 0;
+#X connect 4 1 0 0;
+#X connect 5 0 6 1;
+#X connect 6 0 1 0;

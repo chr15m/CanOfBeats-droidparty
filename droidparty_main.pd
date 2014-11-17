@@ -1,0 +1,244 @@
+#N struct 1897template-marker float a float b;
+#N canvas 545 66 480 320 10;
+#X declare -path .;
+#X declare -path ./rjlib/rj/;
+#X declare -path ./rjlib/rj/;
+#X declare -path ./rjlib/rj/;
+#X declare -path ./pd-net-sync/;
+#X obj 378 324 _main;
+#X obj 60 324 menubang load;
+#X obj 4 324 menubang save;
+#X obj 387 300 cnv 8 24 16 empty ticker empty 20 12 0 14 -258113 -66577
+0;
+#N canvas 16 48 450 661 interface 0;
+#X obj 229 100 s shake;
+#X obj 305 198 r tick;
+#X msg 305 336 \; ticker pos \$1 \$2 \;;
+#X obj 305 220 mod 16;
+#X obj 305 263 + 10;
+#X obj 305 309 spigot 1;
+#X obj 389 237 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 305 288 pack f 300;
+#X obj 229 79 r wordbutton-randomize;
+#X obj 350 198 r loop-length;
+#X msg 229 145 \; clear_synth bang \;;
+#X obj 10 252 r notes;
+#X obj 10 359 route 0;
+#X obj 10 380 unpack f f f f;
+#X obj 10 462 s note-1-set;
+#X obj 37 441 s note-2-set;
+#X obj 91 400 s note-4-set;
+#X obj 64 420 s note-3-set;
+#X msg 179 253 \; notes 0 \$1 \;;
+#X msg 178 312 \; notes 1 \$1 \;;
+#X msg 179 372 \; notes 2 \$1 \;;
+#X msg 178 429 \; notes 3 \$1 \;;
+#X obj 179 232 r note-1/idx;
+#X obj 178 291 r note-2/idx;
+#X obj 179 351 r note-3/idx;
+#X obj 178 408 r note-4/idx;
+#X obj 37 293 list length;
+#X obj 10 273 t a a;
+#X obj 37 314 == 5;
+#X obj 10 336 spigot;
+#X obj 11 101 s cb-save;
+#X obj 229 13 r menubang-load;
+#X obj 11 13 r menubang-save;
+#X obj 11 80 r storage-save;
+#X obj 111 80 r storage-load;
+#X obj 111 101 s cb-load;
+#X obj 233 498 r record-button;
+#X obj 233 519 sel 1 0;
+#X msg 252 627 \; record stop bang;
+#X msg 233 592 \; recording save ../recordings wav;
+#X obj 12 536 r recording-save;
+#X msg 12 609 \; record start \$1;
+#X obj 305 242 * 29;
+#X msg 229 33 \; storage load ../savefiles cbs;
+#X msg 11 33 \; storage save ../savefiles cbs;
+#X obj 233 540 t b b;
+#X obj 12 557 t a b;
+#X msg 260 560 \; record-button-r set 0 \;;
+#X msg 39 577 \; record-button-r set 1 \;;
+#X obj 229 122 r wordbutton-clear;
+#X msg 35 169 \; shake-notes bang \;;
+#X obj 35 147 r wordbutton-notes;
+#X connect 1 0 3 0;
+#X connect 3 0 42 0;
+#X connect 4 0 7 0;
+#X connect 5 0 2 0;
+#X connect 6 0 5 1;
+#X connect 7 0 5 0;
+#X connect 8 0 0 0;
+#X connect 9 0 3 1;
+#X connect 11 0 27 0;
+#X connect 12 0 13 0;
+#X connect 13 0 14 0;
+#X connect 13 1 15 0;
+#X connect 13 2 17 0;
+#X connect 13 3 16 0;
+#X connect 22 0 18 0;
+#X connect 23 0 19 0;
+#X connect 24 0 20 0;
+#X connect 25 0 21 0;
+#X connect 26 0 28 0;
+#X connect 27 0 29 0;
+#X connect 27 1 26 0;
+#X connect 28 0 29 1;
+#X connect 29 0 12 0;
+#X connect 31 0 43 0;
+#X connect 32 0 44 0;
+#X connect 33 0 30 0;
+#X connect 34 0 35 0;
+#X connect 36 0 37 0;
+#X connect 37 0 45 0;
+#X connect 37 1 38 0;
+#X connect 40 0 46 0;
+#X connect 42 0 4 0;
+#X connect 45 0 39 0;
+#X connect 45 1 47 0;
+#X connect 46 0 41 0;
+#X connect 46 1 48 0;
+#X connect 49 0 10 0;
+#X connect 51 0 50 0;
+#X restore 119 324 pd interface;
+#X obj 204 324 loadsave storage;
+#X obj 10 208 tgl 24 1 tgl_bd-edit_0 tgl_r_bd-edit_0 empty 17 7 0 10
+-262144 -1 -1 1 1;
+#X obj 39 208 tgl 24 1 tgl_bd-edit_1 tgl_r_bd-edit_1 empty 17 7 0 10
+-262144 -1 -1 0 1;
+#X obj 68 208 tgl 24 1 tgl_bd-edit_2 tgl_r_bd-edit_2 empty 17 7 0 10
+-262144 -1 -1 1 1;
+#X obj 97 208 tgl 24 1 tgl_bd-edit_3 tgl_r_bd-edit_3 empty 17 7 0 10
+-262144 -1 -1 0 1;
+#X obj 126 208 tgl 24 1 tgl_bd-edit_4 tgl_r_bd-edit_4 empty 17 7 0
+10 -262144 -1 -1 0 1;
+#X obj 155 208 tgl 24 1 tgl_bd-edit_5 tgl_r_bd-edit_5 empty 17 7 0
+10 -262144 -1 -1 0 1;
+#X obj 184 208 tgl 24 1 tgl_bd-edit_6 tgl_r_bd-edit_6 empty 17 7 0
+10 -262144 -1 -1 0 1;
+#X obj 213 208 tgl 24 1 tgl_bd-edit_7 tgl_r_bd-edit_7 empty 17 7 0
+10 -262144 -1 -1 0 1;
+#X obj 242 208 tgl 24 1 tgl_bd-edit_8 tgl_r_bd-edit_8 empty 17 7 0
+10 -262144 -1 -1 0 1;
+#X obj 271 208 tgl 24 1 tgl_bd-edit_9 tgl_r_bd-edit_9 empty 17 7 0
+10 -262144 -1 -1 0 1;
+#X obj 300 208 tgl 24 1 tgl_bd-edit_10 tgl_r_bd-edit_10 empty 17 7
+0 10 -262144 -1 -1 1 1;
+#X obj 329 208 tgl 24 1 tgl_bd-edit_11 tgl_r_bd-edit_11 empty 17 7
+0 10 -262144 -1 -1 0 1;
+#X obj 358 208 tgl 24 1 tgl_bd-edit_12 tgl_r_bd-edit_12 empty 17 7
+0 10 -262144 -1 -1 0 1;
+#X obj 387 208 tgl 24 1 tgl_bd-edit_13 tgl_r_bd-edit_13 empty 17 7
+0 10 -262144 -1 -1 0 1;
+#X obj 416 208 tgl 24 1 tgl_bd-edit_14 tgl_r_bd-edit_14 empty 17 7
+0 10 -262144 -1 -1 0 1;
+#X obj 445 208 tgl 24 1 tgl_bd-edit_15 tgl_r_bd-edit_15 empty 17 7
+0 10 -262144 -1 -1 0 1;
+#X obj 10 239 tgl 24 1 tgl_sd-edit_0 tgl_r_sd-edit_0 empty 17 7 0 10
+-262144 -1 -1 0 1;
+#X obj 39 239 tgl 24 1 tgl_sd-edit_1 tgl_r_sd-edit_1 empty 17 7 0 10
+-262144 -1 -1 0 1;
+#X obj 68 239 tgl 24 1 tgl_sd-edit_2 tgl_r_sd-edit_2 empty 17 7 0 10
+-262144 -1 -1 0 1;
+#X obj 97 239 tgl 24 1 tgl_sd-edit_3 tgl_r_sd-edit_3 empty 17 7 0 10
+-262144 -1 -1 0 1;
+#X obj 126 239 tgl 24 1 tgl_sd-edit_4 tgl_r_sd-edit_4 empty 17 7 0
+10 -262144 -1 -1 1 1;
+#X obj 155 239 tgl 24 1 tgl_sd-edit_5 tgl_r_sd-edit_5 empty 17 7 0
+10 -262144 -1 -1 0 1;
+#X obj 184 239 tgl 24 1 tgl_sd-edit_6 tgl_r_sd-edit_6 empty 17 7 0
+10 -262144 -1 -1 0 1;
+#X obj 213 239 tgl 24 1 tgl_sd-edit_7 tgl_r_sd-edit_7 empty 17 7 0
+10 -262144 -1 -1 0 1;
+#X obj 242 239 tgl 24 1 tgl_sd-edit_8 tgl_r_sd-edit_8 empty 17 7 0
+10 -262144 -1 -1 0 1;
+#X obj 271 239 tgl 24 1 tgl_sd-edit_9 tgl_r_sd-edit_9 empty 17 7 0
+10 -262144 -1 -1 0 1;
+#X obj 300 239 tgl 24 1 tgl_sd-edit_10 tgl_r_sd-edit_10 empty 17 7
+0 10 -262144 -1 -1 0 1;
+#X obj 329 239 tgl 24 1 tgl_sd-edit_11 tgl_r_sd-edit_11 empty 17 7
+0 10 -262144 -1 -1 0 1;
+#X obj 358 239 tgl 24 1 tgl_sd-edit_12 tgl_r_sd-edit_12 empty 17 7
+0 10 -262144 -1 -1 1 1;
+#X obj 387 239 tgl 24 1 tgl_sd-edit_13 tgl_r_sd-edit_13 empty 17 7
+0 10 -262144 -1 -1 0 1;
+#X obj 416 239 tgl 24 1 tgl_sd-edit_14 tgl_r_sd-edit_14 empty 17 7
+0 10 -262144 -1 -1 0 1;
+#X obj 445 239 tgl 24 1 tgl_sd-edit_15 tgl_r_sd-edit_15 empty 17 7
+0 10 -262144 -1 -1 0 1;
+#X obj 10 270 tgl 24 1 tgl_hh-edit_0 tgl_r_hh-edit_0 empty 17 7 0 10
+-262144 -1 -1 1 1;
+#X obj 39 270 tgl 24 1 tgl_hh-edit_1 tgl_r_hh-edit_1 empty 17 7 0 10
+-262144 -1 -1 0 1;
+#X obj 68 270 tgl 24 1 tgl_hh-edit_2 tgl_r_hh-edit_2 empty 17 7 0 10
+-262144 -1 -1 1 1;
+#X obj 97 270 tgl 24 1 tgl_hh-edit_3 tgl_r_hh-edit_3 empty 17 7 0 10
+-262144 -1 -1 0 1;
+#X obj 126 270 tgl 24 1 tgl_hh-edit_4 tgl_r_hh-edit_4 empty 17 7 0
+10 -262144 -1 -1 1 1;
+#X obj 155 270 tgl 24 1 tgl_hh-edit_5 tgl_r_hh-edit_5 empty 17 7 0
+10 -262144 -1 -1 0 1;
+#X obj 184 270 tgl 24 1 tgl_hh-edit_6 tgl_r_hh-edit_6 empty 17 7 0
+10 -262144 -1 -1 1 1;
+#X obj 213 270 tgl 24 1 tgl_hh-edit_7 tgl_r_hh-edit_7 empty 17 7 0
+10 -262144 -1 -1 0 1;
+#X obj 242 270 tgl 24 1 tgl_hh-edit_8 tgl_r_hh-edit_8 empty 17 7 0
+10 -262144 -1 -1 1 1;
+#X obj 271 270 tgl 24 1 tgl_hh-edit_9 tgl_r_hh-edit_9 empty 17 7 0
+10 -262144 -1 -1 0 1;
+#X obj 300 270 tgl 24 1 tgl_hh-edit_10 tgl_r_hh-edit_10 empty 17 7
+0 10 -262144 -1 -1 1 1;
+#X obj 329 270 tgl 24 1 tgl_hh-edit_11 tgl_r_hh-edit_11 empty 17 7
+0 10 -262144 -1 -1 0 1;
+#X obj 358 270 tgl 24 1 tgl_hh-edit_12 tgl_r_hh-edit_12 empty 17 7
+0 10 -262144 -1 -1 1 1;
+#X obj 387 270 tgl 24 1 tgl_hh-edit_13 tgl_r_hh-edit_13 empty 17 7
+0 10 -262144 -1 -1 0 1;
+#X obj 416 270 tgl 24 1 tgl_hh-edit_14 tgl_r_hh-edit_14 empty 17 7
+0 10 -262144 -1 -1 1 1;
+#X obj 445 270 tgl 24 1 tgl_hh-edit_15 tgl_r_hh-edit_15 empty 17 7
+0 10 -262144 -1 -1 0 1;
+#X obj 363 10 numberbox 64 32 bpmreceive bpm 30 320 90;
+#X obj 4 353 build-toggles 16 hh-edit 24;
+#X obj 4 373 build-toggles 16 bd-edit 24;
+#X obj 174 373 build-toggles 16 sd-edit 24;
+#X obj 378 373 looplink sd;
+#X obj 378 352 looplink hh;
+#X obj 304 352 looplink bd;
+#X obj 182 351 loadsave recording;
+#X obj 435 10 tgl 32 0 record-button record-button-r empty 17 7 0 10
+-258113 -1 -1 0 1;
+#X obj 228 78 touch 240 120 synthtouch;
+#X obj 10 80 vsl 24 80 0 1 0 1 synth_pan synth_pan_r empty 0 -9 0 10
+-262144 -1 -1 3550 1;
+#X obj 41 80 vsl 24 80 0 1 0 1 drums_pan drums_pan_r empty 0 -9 0 10
+-262144 -1 -1 3550 1;
+#X obj 41 174 tgl 24 1 volume_drums volume_drums_r empty 17 7 0 10
+-262144 -1 -1 0 1;
+#X obj 10 174 tgl 24 1 volume_synth volume_synth_r empty 17 7 0 10
+-262144 -1 -1 0 1;
+#X obj 148 78 taplist 64 28 note-1-set note-1 C C# D D# E F F# G G#
+A A# B;
+#X obj 10 10 wordbutton 140 32 randomize;
+#N canvas 2 48 450 300 net 0;
+#X obj 262 11 declare -path ./pd-net-sync/;
+#X obj 33 66 netro timer-1 90;
+#X obj 34 89 netsync /note-1 note-1/idx note-1-set;
+#X obj 34 109 netsync /note-2 note-2/idx note-2-set;
+#X obj 34 129 netsync /note-3 note-3/idx note-3-set;
+#X obj 34 149 netsync /note-4 note-4/idx note-4-set;
+#X restore 312 324 pd net;
+#X obj 74 78 taplist 64 28 set-bd choose-bd 1 2 3 4 5 6 7 8;
+#X obj 148 108 taplist 64 28 note-2-set note-2 C C# D D# E F F# G G#
+A A# B;
+#X obj 148 139 taplist 64 28 note-3-set note-3 C C# D D# E F F# G G#
+A A# B;
+#X obj 148 170 taplist 64 28 note-4-set note-4 C C# D D# E F F# G G#
+A A# B;
+#X obj 74 108 taplist 64 28 set-sd choose-sd 1 2 3 4 5 6 7 8;
+#X obj 74 139 taplist 64 28 set-hh choose-hh 1 2 3 4 5 6 7 8;
+#X obj 74 170 taplist 64 28 set-synth choose-synth saw sqr plck;
+#X obj 404 46 wordbutton 64 32 clear;
+#X obj 158 10 wordbutton 140 32 notes;
