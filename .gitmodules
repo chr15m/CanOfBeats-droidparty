@@ -6,4 +6,4 @@
 	url = https://github.com/chr15m/rjlib.git
 [submodule "SyncJams"]
 	path = SyncJams
-	url = git@github.com:chr15m/SyncJams.git
+	url = https://github.com:chr15m/SyncJams.git
