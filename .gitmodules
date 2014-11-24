@@ -7,3 +7,6 @@
 [submodule "SyncJams"]
 	path = SyncJams
 	url = https://github.com/chr15m/SyncJams.git
+[submodule "blockhead"]
+	path = blockhead
+	url = https://github.com/chr15m/blockhead.git
