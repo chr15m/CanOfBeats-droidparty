@@ -1,0 +1,17 @@
+#!/bin/bash
+
+if [ "$1" == "" ]
+then
+	echo "Usage: $0 IP-ADDRESS"
+else
+	dir=`pwd`
+	name=`basename $dir`
+	subdirs=`find ./ -type d | grep -v .git`
+	subdirsall=""
+	for s in $subdirs;
+	do
+		echo "mkcol $s" | cadaver dav://$1:8080/$name/
+		remote=${s/\.\//};
+		echo "mput $s/* $s/" | cadaver dav://$1:8080/$name/
+	done
+fi
