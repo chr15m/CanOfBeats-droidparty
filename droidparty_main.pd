@@ -1,16 +1,17 @@
-#N struct 1897template-marker float a float b;
-#N canvas 545 66 480 320 10;
+#N struct 1254template-marker float a float b;
+#N canvas 571 123 486 323 10;
 #X declare -path .;
 #X declare -path ./rjlib/rj/;
 #X declare -path ./rjlib/rj/;
 #X declare -path ./rjlib/rj/;
-#X declare -path ./pd-net-sync/;
+#X declare -path ./SyncJams/pure-data/;
+#X declare -path ./blockhead/;
 #X obj 378 324 _main;
 #X obj 60 324 menubang load;
 #X obj 4 324 menubang save;
-#X obj 387 300 cnv 8 24 16 empty ticker empty 20 12 0 14 -258113 -66577
+#X obj 300 300 cnv 8 24 16 empty ticker empty 20 12 0 14 -258113 -66577
 0;
-#N canvas 16 48 450 661 interface 0;
+#N canvas 10 50 450 661 interface 0;
 #X obj 229 100 s shake;
 #X obj 305 198 r tick;
 #X msg 305 336 \; ticker pos \$1 \$2 \;;
@@ -200,7 +201,6 @@
 0 10 -262144 -1 -1 1 1;
 #X obj 445 270 tgl 24 1 tgl_hh-edit_15 tgl_r_hh-edit_15 empty 17 7
 0 10 -262144 -1 -1 0 1;
-#X obj 363 10 numberbox 64 32 bpmreceive bpm 30 320 90;
 #X obj 4 353 build-toggles 16 hh-edit 24;
 #X obj 4 373 build-toggles 16 bd-edit 24;
 #X obj 174 373 build-toggles 16 sd-edit 24;
@@ -214,21 +214,59 @@
 #X obj 10 80 vsl 24 80 0 1 0 1 synth_pan synth_pan_r empty 0 -9 0 10
 -262144 -1 -1 3550 1;
 #X obj 41 80 vsl 24 80 0 1 0 1 drums_pan drums_pan_r empty 0 -9 0 10
--262144 -1 -1 3550 1;
+-262144 -1 -1 7050 1;
 #X obj 41 174 tgl 24 1 volume_drums volume_drums_r empty 17 7 0 10
--262144 -1 -1 0 1;
+-262144 -1 -1 1 1;
 #X obj 10 174 tgl 24 1 volume_synth volume_synth_r empty 17 7 0 10
 -262144 -1 -1 0 1;
 #X obj 148 78 taplist 64 28 note-1-set note-1 C C# D D# E F F# G G#
 A A# B;
 #X obj 10 10 wordbutton 140 32 randomize;
-#N canvas 2 48 450 300 net 0;
-#X obj 262 11 declare -path ./pd-net-sync/;
-#X obj 33 66 netro timer-1 90;
-#X obj 34 89 netsync /note-1 note-1/idx note-1-set;
-#X obj 34 109 netsync /note-2 note-2/idx note-2-set;
-#X obj 34 129 netsync /note-3 note-3/idx note-3-set;
-#X obj 34 149 netsync /note-4 note-4/idx note-4-set;
+#N canvas 73 87 450 311 net 0;
+#X obj 226 10 declare -path ./SyncJams/pure-data/;
+#X obj 8 35 syncjams \$0/syncjams;
+#X obj 8 271 syncjams-gui-connector \$0/syncjams /BPM /BPM/r;
+#X obj 280 31 declare -path ./blockhead/;
+#X msg 57 162 bpm \$1;
+#X obj 174 97 r \$0/doubletime;
+#X msg 174 161 multiple \$1;
+#X obj 174 119 + 1;
+#X obj 8 231 s tick;
+#X obj 174 141 * 2;
+#X obj 314 236 \$0;
+#X msg 314 214 bang;
+#X msg 314 258 \; \$1/syncjams/debug 1 \;;
+#N canvas 572 65 450 300 get-bpm 0;
+#X obj 16 11 inlet;
+#X obj 16 33 t a a;
+#X obj 385 267 outlet;
+#X obj 11 269 outlet;
+#X obj 16 95 list split 1;
+#X obj 50 117 list trim;
+#X obj 50 139 route /BPM;
+#X connect 0 0 1 0;
+#X connect 1 0 4 0;
+#X connect 1 1 2 0;
+#X connect 4 1 5 0;
+#X connect 5 0 6 0;
+#X connect 6 0 3 0;
+#X restore 57 141 pd get-bpm;
+#X obj 8 119 / 6;
+#X obj 8 141 int;
+#X obj 8 163 change;
+#X obj 8 97 route sub-tick state tick;
+#X connect 1 0 17 0;
+#X connect 5 0 7 0;
+#X connect 7 0 9 0;
+#X connect 9 0 6 0;
+#X connect 10 0 12 0;
+#X connect 11 0 10 0;
+#X connect 13 0 4 0;
+#X connect 14 0 15 0;
+#X connect 15 0 16 0;
+#X connect 16 0 8 0;
+#X connect 17 0 14 0;
+#X connect 17 1 13 0;
 #X restore 312 324 pd net;
 #X obj 74 78 taplist 64 28 set-bd choose-bd 1 2 3 4 5 6 7 8;
 #X obj 148 108 taplist 64 28 note-2-set note-2 C C# D D# E F F# G G#
@@ -242,3 +280,7 @@ A A# B;
 #X obj 74 170 taplist 64 28 set-synth choose-synth saw sqr plck;
 #X obj 404 46 wordbutton 64 32 clear;
 #X obj 158 10 wordbutton 140 32 notes;
+#X obj 365 10 numberbox 64 32 /BPM/r /BPM 30 320 180;
+#X obj 329 10 tgl 32 0 \$0/doubletime empty empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X text 333 43 bpm;
