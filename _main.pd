@@ -1,4 +1,4 @@
-#N canvas 807 48 385 632 10;
+#N canvas 806 48 385 632 10;
 #X declare -path .;
 #X declare -path ./rjlib/rj/;
 #X declare -path ./rjlib/rj/;
@@ -28736,13 +28736,13 @@ sd-makeloop bang \; hh-makeloop bang \; multiplier 2 \;;
 #N canvas 741 50 450 661 synths 0;
 #N canvas 0 50 450 300 (subpatch) 0;
 #X array notes 4 float 3;
-#A 0 0 2 7 8;
+#A 0 0 0 0 0;
 #X coords 0 24 4 0 50 25 1;
 #X restore 383 104 graph;
 #X obj 10 12 r shake;
 #N canvas 0 50 450 300 (subpatch) 0;
 #X array notelist-0 16 float 3;
-#A 0 0 11 3 6 5 2 2 6 4 5 8 7 0 0 8 0;
+#A 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0;
 #X coords 0 25 15 0 50 25 1;
 #X restore 18 230 graph;
 #X msg 10 115 0 \$1;
@@ -28833,9 +28833,7 @@ else lowest;
 #X msg 90 255 \; notelist-0 const 0;
 #N canvas 0 50 450 300 (subpatch) 0;
 #X array noteparam-0 16 float 3;
-#A 0 0.467499 0.705831 0.339166 0.595832 0.449165 0.229166 0.421665
-0.669165 0.357499 0.247499 0.568332 0.595832 0 0 0.797498 0.504165
-;
+#A 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0;
 #X coords 0 1 15 0 50 25 1;
 #X restore 18 280 graph;
 #X msg 90 305 \; noteparam-0 const 0;
